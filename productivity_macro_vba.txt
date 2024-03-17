@@ -1,0 +1,1245 @@
+Option Explicit
+Public Sub Create_sheets()
+
+Sheets.Add after:=Sheets(Sheets.Count)
+ActiveSheet.Name = "Shifts"
+
+Sheets.Add after:=Sheets(Sheets.Count)
+ActiveSheet.Name = "other_shifts"
+
+Sheets.Add after:=Sheets(Sheets.Count)
+ActiveSheet.Name = "Overtime"
+
+Sheets.Add after:=Sheets(Sheets.Count)
+ActiveSheet.Name = "PARS"
+
+Sheets.Add after:=Sheets(Sheets.Count)
+ActiveSheet.Name = "shwet_DE"
+
+Sheets.Add after:=Sheets(Sheets.Count)
+ActiveSheet.Name = "Nit_EU5"
+
+Sheets.Add after:=Sheets(Sheets.Count)
+ActiveSheet.Name = "Offline_Audits_tool"
+
+Sheets.Add after:=Sheets(Sheets.Count)
+ActiveSheet.Name = "Offline_Audits_Adhoc"
+
+Sheets.Add after:=Sheets(Sheets.Count)
+ActiveSheet.Name = "Offline_Mapping"
+
+Sheets.Add after:=Sheets(Sheets.Count)
+ActiveSheet.Name = "Shipping_Audits"
+
+Worksheets("Shifts").Select
+
+
+End Sub
+Public Sub create_UniqueShifts()
+
+Dim i As Long
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Shifts").Select
+Range("A2", "A" & LastRow).NumberFormat = "dd-mm-yyyy"
+Columns("A:A").Insert Shift:=xlToRight
+Range("A1").Value = "Uniques"
+For i = 2 To LastRow
+Worksheets("Shifts").Range("A" & i).Value = Range("B" & i) & Range("C" & i)
+Next
+
+
+End Sub
+
+Public Sub create_OT()
+
+Dim i As Long
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Overtime").Select
+Range("A2", "A" & LastRow).NumberFormat = "dd-mm-yyyy"
+Columns("A:A").Insert Shift:=xlToRight
+Range("A1").Value = "Uniques"
+For i = 2 To LastRow
+Worksheets("Overtime").Range("A" & i).Value = Range("B" & i) & Range("C" & i)
+Next
+
+
+End Sub
+
+Public Sub Create_UniqueParsValues()
+
+Dim i As Long
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("PARS").Select
+Range("A2", "A" & LastRow).NumberFormat = "dd-mm-yyyy"
+Columns("A:A").Insert Shift:=xlToRight
+Range("A1").Value = "Uniques"
+For i = 2 To LastRow
+Worksheets("PARS").Range("A" & i).Value = Range("B" & i) & Range("C" & i)
+Next
+
+End Sub
+
+Public Sub Create_Unique_DE_Cohort()
+
+Dim i As Long
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Shweta_DE").Select
+Range("A2", "A" & LastRow).NumberFormat = "dd-mm-yyyy"
+Columns("A:A").Insert Shift:=xlToRight
+Range("A1").Value = "Uniques"
+For i = 2 To LastRow
+Worksheets("Shweta_DE").Cells(i, 1).Value = Range("B" & i) & Range("C" & i)
+Next
+
+End Sub
+
+Public Sub Create_Unique_EU5()
+
+Dim i As Long
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Nitish_EU5").Select
+Range("A2", "A" & LastRow).NumberFormat = "dd-mm-yyyy"
+Columns("A:A").Insert Shift:=xlToRight
+Range("A1").Value = "Uniques"
+For i = 2 To LastRow
+Worksheets("Nitish_EU5").Cells(i, 1).Value = Range("B" & i) & Range("C" & i)
+Next
+
+End Sub
+Public Sub create_offline_audit_tool_keys()
+
+Dim i As Long
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Offline_Audits_tool").Select
+Range("A2", "A" & LastRow).NumberFormat = "dd-mm-yyyy"
+Columns("A:A").Insert Shift:=xlToRight
+Range("A1").Value = "Uniques"
+For i = 2 To LastRow
+Worksheets("Offline_Audits_tool").Cells(i, 1).Value = Range("B" & i) & Range("C" & i)
+Next
+
+End Sub
+Public Sub create_offline_audit_adhoc_keys()
+
+Dim i As Long
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Offline_Audits_Adhoc").Select
+Range("A2", "A" & LastRow).NumberFormat = "dd-mm-yyyy"
+Columns("A:A").Insert Shift:=xlToRight
+Range("A1").Value = "Uniques"
+For i = 2 To LastRow
+Worksheets("Offline_Audits_Adhoc").Cells(i, 1).Value = Range("B" & i) & Range("C" & i)
+Next
+
+End Sub
+Public Sub create_offline_mapping_keys()
+
+Dim i As Long
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Offline_Mapping").Select
+Range("A2", "A" & LastRow).NumberFormat = "dd-mm-yyyy"
+Columns("A:A").Insert Shift:=xlToRight
+Range("A1").Value = "Uniques"
+For i = 2 To LastRow
+Worksheets("Offline_Mapping").Cells(i, 1).Value = Range("B" & i) & Range("C" & i)
+Next
+
+End Sub
+Public Sub create_shipping_keys()
+
+Dim i As Long
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Shipping_Audits").Select
+Range("A2", "A" & LastRow).NumberFormat = "dd-mm-yyyy"
+Columns("A:A").Insert Shift:=xlToRight
+Range("A1").Value = "Uniques"
+For i = 2 To LastRow
+Worksheets("Shipping_Audits").Cells(i, 1).Value = Range("B" & i) & Range("C" & i)
+Next
+
+End Sub
+
+
+Public Sub Create_FinalFormat()
+
+Dim i As Long
+Dim LastRow As Long
+Dim LastColumn As Long
+LastRow = Range("A2").End(xlDown).Row
+LastColumn = Range("A1").End(xlToRight).Column
+
+'1 create new sheet
+
+Sheets.Add after:=Sheets(Sheets.Count)
+ActiveSheet.Name = "Final-Counts"
+
+'2 Fill the Values into new sheet
+       ActiveCell.FormulaR1C1 = "Uniques"
+    Range("B1").Select
+    ActiveCell.FormulaR1C1 = "Audit_date"
+    Range("C1").Select
+    ActiveCell.FormulaR1C1 = "Login_ID"
+    Range("D1").Select
+    ActiveCell.FormulaR1C1 = "Overall_Tool_Counts"
+    Range("E2").Select
+    ActiveCell.FormulaR1C1 = "PARS_Tool_counts(Zircon)"
+    Range("F2").Select
+    ActiveCell.FormulaR1C1 = "EU5_SL_TEEN_Temp_Excel"
+    Range("G2").Select
+    ActiveCell.FormulaR1C1 = "EU5_SL_TEEN_Temp_Tool"
+    Range("H2").Select
+    ActiveCell.FormulaR1C1 = "DE_Cohort_Excel"
+    Range("I2").Select
+    ActiveCell.FormulaR1C1 = "DE_Cohort_Tool"
+    Range("J2").Select
+    ActiveCell.FormulaR1C1 = "Offline_audits_tool"
+    Range("K2").Select
+    ActiveCell.FormulaR1C1 = "Offline_audits_Adhoc"
+    Range("L2").Select
+    ActiveCell.FormulaR1C1 = "Offline_mapping_Excel"
+    Range("M2").Select
+    ActiveCell.FormulaR1C1 = "Offline_mapping_Tool"
+    Range("N2").Select
+    ActiveCell.FormulaR1C1 = "Shipping_audits_Excel"
+    Range("O2").Select
+    ActiveCell.FormulaR1C1 = "Shipping_audit_tool"
+    Range("P1").Select
+    ActiveCell.FormulaR1C1 = "Shift"
+    Range("Q1").Select
+    ActiveCell.FormulaR1C1 = "Manager"
+    Range("R1").Select
+    ActiveCell.FormulaR1C1 = "Standard_working_hours"
+    Range("S1").Select
+    ActiveCell.FormulaR1C1 = "Overtime"
+    Range("T1").Select
+    ActiveCell.FormulaR1C1 = "Final_working_hours"
+    Range("U1").Select
+    ActiveCell.FormulaR1C1 = "Normalised_counts"
+    Range("V1").Select
+    ActiveCell.FormulaR1C1 = "Target"
+    Range("W1").Select
+    ActiveCell.FormulaR1C1 = "Final Target(Incl OT)"
+    Range("E1:O1").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("E1:O1").Select
+    ActiveCell.FormulaR1C1 = "Audit channels"
+    Range("A1:A2").Select
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    Selection.Copy
+    Range("B1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("C1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("D1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("P1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("Q1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    ActiveWindow.ScrollColumn = 2
+    ActiveWindow.ScrollColumn = 3
+    ActiveWindow.ScrollColumn = 4
+    ActiveWindow.ScrollColumn = 5
+    Range("R1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("S1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("T1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("U1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("V1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("W1").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    ActiveWindow.ScrollColumn = 4
+    ActiveWindow.ScrollColumn = 3
+    ActiveWindow.ScrollColumn = 2
+    ActiveWindow.ScrollColumn = 1
+    Application.CutCopyMode = False
+    ActiveWindow.ScrollColumn = 13
+    ActiveWindow.ScrollColumn = 12
+    ActiveWindow.ScrollColumn = 11
+    ActiveWindow.ScrollColumn = 10
+    ActiveWindow.ScrollColumn = 9
+    ActiveWindow.ScrollColumn = 8
+    ActiveWindow.ScrollColumn = 7
+    ActiveWindow.ScrollColumn = 6
+    ActiveWindow.ScrollColumn = 5
+    ActiveWindow.ScrollColumn = 4
+    ActiveWindow.ScrollColumn = 3
+    ActiveWindow.ScrollColumn = 2
+    ActiveWindow.ScrollColumn = 1
+    Range("E1:O1").Select
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    Selection.Copy
+    Range("E2").Select
+    Application.CutCopyMode = False
+    Range("E2").Select
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlMedium
+    End With
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    Selection.Copy
+    Range("F2").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("G2").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("H2").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("I2").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("J2").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("K2").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("L2").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("M2").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("N2").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Range("O2").Select
+    Selection.PasteSpecial Paste:=xlPasteFormats, Operation:=xlNone, _
+        SkipBlanks:=False, Transpose:=False
+    Application.CutCopyMode = False
+    Rows("1:1").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlBottom
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+    End With
+    With Selection.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark2
+        .TintAndShade = -9.99786370433668E-02
+        .PatternTintAndShade = 0
+    End With
+    
+Range("a1").EntireColumn.AutoFit
+Range("b1").EntireColumn.AutoFit
+Range("c1").EntireColumn.AutoFit
+Range("d1").EntireColumn.AutoFit
+Range("e1").EntireColumn.AutoFit
+Range("f1").EntireColumn.AutoFit
+Range("g1").EntireColumn.AutoFit
+Range("h1").EntireColumn.AutoFit
+Range("i1").EntireColumn.AutoFit
+Range("j1").EntireColumn.AutoFit
+Range("k1").EntireColumn.AutoFit
+Range("l1").EntireColumn.AutoFit
+Range("m1").EntireColumn.AutoFit
+Range("n1").EntireColumn.AutoFit
+Range("o1").EntireColumn.AutoFit
+Range("p1").EntireColumn.AutoFit
+Range("q1").EntireColumn.AutoFit
+Range("r1").EntireColumn.AutoFit
+Range("s1").EntireColumn.AutoFit
+Range("t1").EntireColumn.AutoFit
+Range("u1").EntireColumn.AutoFit
+Range("v1").EntireColumn.AutoFit
+Range("w1").EntireColumn.AutoFit
+Worksheets("PARS").Select
+
+End Sub
+Public Sub Copy_Pars_Data()
+
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("PARS").Select
+Worksheets("PARS").Range("A2", "A" & LastRow).Copy
+Worksheets("Final-Counts").Select
+Worksheets("Final-Counts").Range("A3").PasteSpecial xlValues
+Worksheets("Shweta_DE").Select
+
+End Sub
+Public Sub Copy_DEcohort_Data()
+
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Shweta_DE").Range("A2", "A" & LastRow).Copy
+Worksheets("Final-Counts").Select
+Worksheets("Final-Counts").Range("A" & Range("A3").End(xlDown).Row + 1).PasteSpecial xlValues
+Worksheets("Nitish_EU5").Select
+
+End Sub
+Public Sub Copy_EU5_Data()
+
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Nitish_EU5").Range("A2", "A" & LastRow).Copy
+Worksheets("Final-Counts").Select
+Worksheets("Final-Counts").Range("A" & Range("A3").End(xlDown).Row + 1).PasteSpecial xlValues
+Worksheets("Offline_Audits_tool").Select
+
+End Sub
+Public Sub Copy_offline_audit_tool_Data()
+
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Offline_Audits_tool").Range("A2", "A" & LastRow).Copy
+Worksheets("Final-Counts").Select
+Worksheets("Final-Counts").Range("A" & Range("A3").End(xlDown).Row + 1).PasteSpecial xlValues
+Worksheets("Offline_Audits_Adhoc").Select
+
+End Sub
+Public Sub Copy_offline_audit_adhoc_Data()
+
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Offline_Audits_Adhoc").Range("A2", "A" & LastRow).Copy
+Worksheets("Final-Counts").Select
+Worksheets("Final-Counts").Range("A" & Range("A3").End(xlDown).Row + 1).PasteSpecial xlValues
+Worksheets("Offline_Mapping").Select
+
+End Sub
+Public Sub Copy_offline_mapping()
+
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Offline_Mapping").Range("A2", "A" & LastRow).Copy
+Worksheets("Final-Counts").Select
+Worksheets("Final-Counts").Range("A" & Range("A3").End(xlDown).Row + 1).PasteSpecial xlValues
+Worksheets("Shipping_Audits").Select
+
+End Sub
+Public Sub Copy_shipping()
+
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Shipping_Audits").Range("A2", "A" & LastRow).Copy
+Worksheets("Final-Counts").Select
+Worksheets("Final-Counts").Range("A" & Range("A3").End(xlDown).Row + 1).PasteSpecial xlValues
+
+End Sub
+
+
+
+Public Sub Data_consolidation()
+
+Dim i As Long
+Dim LastRow As Long
+Dim LastColumn As Long
+LastRow = Range("A2").End(xlDown).Row
+LastColumn = Range("A1").End(xlToRight).Column
+
+'5 Remove duplicates from 1st column of final-counts
+
+Worksheets("Final-Counts").Select
+Range("A:A").Select
+ActiveSheet.Range("$A:$A").RemoveDuplicates Columns:=1, Header:=xlNo
+
+'6 Split values from 1st column and flash fill into respective columns.
+
+Range("B3").Select
+Range("B3").Value = "=LEFT(RC[-1],10)"
+Range("B3").Select
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+:=False, Transpose:=False
+        
+Application.CutCopyMode = False
+    
+Range("C3").Select
+Range("C3").Value = "=MID(RC[-2],11,LEN(RC[-2])-10)"
+Range("C3").Select
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+:=False, Transpose:=False
+        
+Application.CutCopyMode = False
+
+Range("$B$3").Value = "'" & Range("B3")
+Range("B3").Select
+Range("$B$3").FlashFill
+Range("C3").Select
+Range("$C$3").FlashFill
+
+'7 format date into columns
+
+Range("B3", "B" & Range("A3").End(xlDown).Row).NumberFormat = "dd-mm-yyyy"
+
+End Sub
+
+
+Public Sub create_vlookup()
+Dim i As Long
+Dim LastRow As Long
+Dim LastColumn As Long
+LastRow = Range("A3").End(xlDown).Row
+LastColumn = Range("A1").End(xlToRight).Column
+
+'8 Vlookup creation
+
+'8.1 Vlookup for Total pars counts
+
+Dim lookupTable As Range
+Dim cell As Range
+Set lookupTable = Worksheets("PARS").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue As String
+
+Dim columnIndex As Integer
+columnIndex = 8
+
+For i = 3 To LastRow
+    lookupValue = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("D" & i).Value = Application.VLookup(lookupValue, lookupTable, columnIndex, False)
+    For Each cell In Range("D" & i)
+        If IsError(cell.Value) Then
+            If cell.Value = CVErr(xlErrNA) Then
+                cell.Value = 0
+            End If
+        End If
+    Next cell
+Next
+
+'8.2 vlookup for shweta_DE excel
+
+Dim lookupTable2 As Range
+Dim cell2 As Range
+Set lookupTable2 = Worksheets("Shweta_DE").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue2 As String
+
+Dim columnIndex2 As Integer
+columnIndex2 = 8
+
+For i = 3 To LastRow
+    lookupValue2 = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("H" & i).Value = Application.VLookup(lookupValue2, lookupTable2, columnIndex2, False)
+    For Each cell2 In Range("H" & i)
+        If IsError(cell2.Value) Then
+            If cell2.Value = CVErr(xlErrNA) Then
+                cell2.Value = 0
+            End If
+            Else
+            cell2.Value = cell2.Value
+        End If
+    Next cell2
+Next
+
+'8.3 vlookup for nistish_EU5 excel
+
+Dim lookupTable1 As Range
+Dim cell1 As Range
+Set lookupTable1 = Worksheets("Nitish_EU5").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue1 As String
+
+Dim columnIndex1 As Integer
+columnIndex1 = 5
+
+For i = 3 To LastRow
+    lookupValue1 = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("F" & i).Value = Application.VLookup(lookupValue1, lookupTable1, columnIndex1, False)
+    For Each cell1 In Range("F" & i)
+        If IsError(cell1.Value) Then
+            If cell1.Value = CVErr(xlErrNA) Then
+                cell1.Value = 0
+            End If
+            Else
+            cell1.Value = cell1.Value
+        End If
+    Next cell1
+Next
+
+
+'8.4 vlookup for nistish_EU5 tool
+
+Dim lookupTable3 As Range
+Dim cell3 As Range
+Set lookupTable3 = Worksheets("Nitish_EU5").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue3 As String
+
+Dim columnIndex3 As Integer
+columnIndex3 = 6
+
+For i = 3 To LastRow
+    lookupValue3 = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("G" & i).Value = Application.VLookup(lookupValue3, lookupTable3, columnIndex3, False)
+    For Each cell3 In Range("G" & i)
+        If IsError(cell3.Value) Then
+            If cell3.Value = CVErr(xlErrNA) Then
+                cell3.Value = 0
+            End If
+            Else
+            cell3.Value = cell3.Value
+        End If
+    Next cell3
+Next
+
+'8.5 vlookup for DE_cohort tool
+For i = 3 To LastRow
+    Range("I" & i).Value = 0
+Next
+
+'8.6 vlookup for offline tool
+
+Dim lookupTable4 As Range
+Dim cell4 As Range
+Set lookupTable4 = Worksheets("Offline_Audits_tool").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue4 As String
+
+Dim columnIndex4 As Integer
+columnIndex4 = 8
+
+For i = 3 To LastRow
+    lookupValue4 = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("J" & i).Value = Application.VLookup(lookupValue4, lookupTable4, columnIndex4, False)
+    For Each cell4 In Range("J" & i)
+        If IsError(cell4.Value) Then
+            If cell4.Value = CVErr(xlErrNA) Then
+                cell4.Value = 0
+            End If
+            Else
+            cell4.Value = cell4.Value
+        End If
+    Next cell4
+Next
+
+'8.7 vlookup for offline Adhoc
+
+Dim lookupTable5 As Range
+Dim cell5 As Range
+Set lookupTable5 = Worksheets("Offline_Audits_Adhoc").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue5 As String
+
+Dim columnIndex5 As Integer
+columnIndex5 = 8
+
+For i = 3 To LastRow
+    lookupValue5 = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("K" & i).Value = Application.VLookup(lookupValue5, lookupTable5, columnIndex5, False)
+    For Each cell5 In Range("K" & i)
+        If IsError(cell5.Value) Then
+            If cell5.Value = CVErr(xlErrNA) Then
+                cell5.Value = 0
+            End If
+            Else
+            cell5.Value = cell5.Value
+        End If
+    Next cell5
+Next
+
+'8.8 vlookup for offline Mapping_excel
+
+Dim lookupTable6 As Range
+Dim cell6 As Range
+Set lookupTable6 = Worksheets("Offline_Mapping").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue6 As String
+
+Dim columnIndex6 As Integer
+columnIndex6 = 10
+
+For i = 3 To LastRow
+    lookupValue6 = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("L" & i).Value = Application.VLookup(lookupValue6, lookupTable6, columnIndex6, False)
+    For Each cell6 In Range("L" & i)
+        If IsError(cell6.Value) Then
+            If cell6.Value = CVErr(xlErrNA) Then
+                cell6.Value = 0
+            End If
+            Else
+            cell6.Value = cell6.Value
+        End If
+    Next cell6
+Next
+
+'8.9 vlookup for offline Mapping_tool
+For i = 3 To LastRow
+    Range("M" & i).Value = 0
+Next
+
+'8.10 vlookup for offline shipping_excel
+
+Dim lookupTable7 As Range
+Dim cell7 As Range
+Set lookupTable7 = Worksheets("Shipping_Audits").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue7 As String
+
+Dim columnIndex7 As Integer
+columnIndex7 = 9
+
+For i = 3 To LastRow
+    lookupValue7 = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("N" & i).Value = Application.VLookup(lookupValue7, lookupTable7, columnIndex7, False)
+    For Each cell7 In Range("N" & i)
+        If IsError(cell7.Value) Then
+            If cell7.Value = CVErr(xlErrNA) Then
+                cell7.Value = 0
+            End If
+            Else
+            cell7.Value = cell7.Value
+        End If
+    Next cell7
+Next
+
+'8.11 vlookup for shipping_tool
+For i = 3 To LastRow
+    Range("O" & i).Value = 0
+Next
+
+
+
+'10 fill target values
+'Range("I3").Value = 0
+'Range("I3").Select
+'Range("$I$3").FlashFill
+
+
+'11 calculating variance
+
+
+
+'13 Actual pars counts on tool in col E
+For i = 3 To LastRow
+Range("E" & i).Value = Range("D" & i).Value - (Range("G" & i).Value + Range("J" & i).Value)
+    'If Range("E" & i).Value < 0 Then
+        'Range("E" & i).Value = 0
+    'Else
+        'Range("E" & i).Value = Range("D" & i).Value - (Range("G" & i).Value + Range("J" & i).Value)
+    'End If
+Next
+
+
+
+
+'12 Autofit columns in Final-counts sheet.
+
+Range("a1").EntireColumn.AutoFit
+Range("b1").EntireColumn.AutoFit
+Range("c1").EntireColumn.AutoFit
+Range("d1").EntireColumn.AutoFit
+Range("e1").EntireColumn.AutoFit
+Range("f1").EntireColumn.AutoFit
+Range("g1").EntireColumn.AutoFit
+Range("h1").EntireColumn.AutoFit
+Range("i1").EntireColumn.AutoFit
+Range("j1").EntireColumn.AutoFit
+Range("k1").EntireColumn.AutoFit
+Range("l1").EntireColumn.AutoFit
+Range("m1").EntireColumn.AutoFit
+Range("n1").EntireColumn.AutoFit
+Range("o1").EntireColumn.AutoFit
+Range("p1").EntireColumn.AutoFit
+Range("q1").EntireColumn.AutoFit
+
+End Sub
+
+Public Sub rest_lookup()
+
+Dim i As Long
+Dim LastRow As Long
+Dim LastColumn As Long
+LastRow = Range("A3").End(xlDown).Row
+LastColumn = Range("A1").End(xlToRight).Column
+
+'1.0 Vlookup for shifts
+
+Dim lookupTable As Range
+Dim cell As Range
+Set lookupTable = Worksheets("Shifts").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue As String
+
+Dim columnIndex As Integer
+columnIndex = 4
+
+For i = 3 To LastRow
+    lookupValue = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("P" & i).Value = Application.VLookup(lookupValue, lookupTable, columnIndex, False)
+    For Each cell In Range("P" & i)
+        If IsError(cell.Value) Then
+            If cell.Value = CVErr(xlErrNA) Then
+                cell.Value = 0
+            End If
+            Else
+            cell.Value = cell.Value
+        End If
+    Next cell
+Next
+
+'1.1 Vlookup for managers
+
+Dim lookupTable1 As Range
+Dim cell1 As Range
+Set lookupTable1 = Worksheets("Shifts").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue1 As String
+
+Dim columnIndex1 As Integer
+columnIndex1 = 5
+
+For i = 3 To LastRow
+    lookupValue1 = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("Q" & i).Value = Application.VLookup(lookupValue1, lookupTable1, columnIndex1, False)
+    For Each cell1 In Range("Q" & i)
+        If IsError(cell1.Value) Then
+            If cell1.Value = CVErr(xlErrNA) Then
+                cell1.Value = 0
+            End If
+            Else
+            cell1.Value = cell1.Value
+        End If
+    Next cell1
+Next
+
+'Standard working hours
+
+For i = 3 To LastRow
+    If Range("P" & i).Value = "AL" Or Range("P" & i).Value = "Attrite" Or Range("P" & i).Value = "CL" Or _
+    Range("P" & i).Value = "OH" Or Range("P" & i).Value = "SL" Or Range("P" & i).Value = "WO" Or _
+    Range("P" & i).Value = "DO" Or Range("P" & i).Value = "TRAINING" Then
+        Range("R" & i).Value = 0
+    ElseIf Range("P" & i).Value = "HL" Then
+        Range("R" & i).Value = 4
+    Else
+        Range("R" & i).Value = 8
+    End If
+Next
+
+'Vlookup for OT
+Dim lookupTable2 As Range
+Dim cell2 As Range
+Set lookupTable2 = Worksheets("Overtime").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue2 As String
+
+Dim columnIndex2 As Integer
+columnIndex2 = 11
+
+For i = 3 To LastRow
+    lookupValue2 = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("S" & i).Value = Application.VLookup(lookupValue2, lookupTable2, columnIndex2, False)
+    For Each cell2 In Range("S" & i)
+        If IsError(cell2.Value) Then
+            If cell2.Value = CVErr(xlErrNA) Then
+                cell2.Value = 0
+            End If
+            Else
+            cell2.Value = cell2.Value
+        End If
+    Next cell2
+Next
+
+'final working hours
+
+For i = 3 To LastRow
+    Range("T" & i).Value = Range("R" & i).Value + Range("S" & i).Value
+Next
+
+'target vlookup
+
+Dim lookupTable3 As Range
+Dim cell3 As Range
+Set lookupTable3 = Worksheets("Shifts").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue3 As String
+
+Dim columnIndex3 As Integer
+columnIndex3 = 6
+
+For i = 3 To LastRow
+    lookupValue3 = Worksheets("Final-Counts").Range("A" & i).Value
+    Worksheets("Final-Counts").Range("V" & i).Value = Application.VLookup(lookupValue3, lookupTable3, columnIndex3, False)
+    For Each cell3 In Range("V" & i)
+        If IsError(cell3.Value) Then
+            If cell3.Value = CVErr(xlErrNA) Then
+                cell3.Value = 0
+            End If
+            Else
+            cell3.Value = cell3.Value
+        End If
+    Next cell3
+Next
+
+For i = 3 To LastRow
+    If Range("V" & i).Value = 325 Then
+        Range("W" & i).Value = Range("T" & i) * 40.625
+    ElseIf Range("V" & i).Value = 370 Then
+        Range("W" & i).Value = Range("T" & i) * 46.25
+    ElseIf Range("V" & i).Value = 300 Then
+        Range("W" & i).Value = Range("T" & i) * 37.5
+    Else
+        Range("W" & i).Value = Range("T" & i) * 21.875
+    End If
+Next
+
+End Sub
+
+Public Sub consolidate()
+'14 sum all values from all audit chanels
+Dim i As Long
+Dim LastRow As Long
+Dim LastColumn As Long
+LastRow = Range("A3").End(xlDown).Row
+LastColumn = Range("A1").End(xlToRight).Column
+
+
+
+For i = 3 To LastRow
+
+    Range("F" & i) = Range("F" & i) * 1.2
+    Range("G" & i) = Range("G" & i) * 1.2
+    Range("H" & i) = Range("H" & i) * 1.2
+    Range("J" & i) = Range("J" & i) * 2
+    
+    Range("U" & i).Value = Range("E" & i).Value + Range("F" & i) + Range("G" & i) + Range("H" & i) + Range("J" & i) + _
+    Range("K" & i) + Range("L" & i) + Range("N" & i)
+Next
+
+
+End Sub
+
+Public Sub shifts_data()
+
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("Shifts").Select
+
+Range("a1").Value = "Uniques"
+Range("b1").Value = "Date"
+Range("c1").Value = "Auditor"
+Range("d1").Value = "Pars_shift"
+Range("e1").Value = "Final_shift"
+Range("f1").Value = "Manager"
+Range("g1").Value = "Target"
+
+Worksheets("PARS").Select
+Worksheets("PARS").Range("A2:d2", "A" & LastRow).Copy
+Worksheets("Shifts").Select
+Worksheets("Shifts").Range("A2").PasteSpecial xlValues
+Application.CutCopyMode = False
+Range("b2", "b" & LastRow).NumberFormat = "dd-mm-yyyy"
+
+End Sub
+
+Public Sub consolidate_otherShifts()
+
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Worksheets("other_shifts").Select
+
+Range("A1").Value = "Uniques"
+Range("B1").Value = "shifts"
+
+Worksheets("Shweta_DE").Select
+Worksheets("Shweta_DE").Range("A2:A" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("A2").PasteSpecial xlValues
+
+Application.CutCopyMode = False
+
+Worksheets("Shweta_DE").Select
+Worksheets("Shweta_DE").Range("E2:E" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("B2").PasteSpecial xlValues
+
+Application.CutCopyMode = False
+
+
+Worksheets("Nitish_EU5").Select
+Worksheets("Nitish_EU5").Range("A2:A" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("A" & Range("A3").End(xlUp).Row + 1).PasteSpecial xlPasteValues
+
+Application.CutCopyMode = False
+
+Worksheets("Nitish_EU5").Select
+Worksheets("Nitish_EU5").Range("D2:D" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("B" & Range("B3").End(xlUp).Row + 1).PasteSpecial xlPasteValues
+
+Application.CutCopyMode = False
+
+
+Worksheets("Offline_Audits_tool").Select
+Worksheets("Offline_Audits_tool").Range("A2:A" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("A" & Range("A3").End(xlDown).Row + 1).PasteSpecial xlPasteValues
+
+Application.CutCopyMode = False
+
+Worksheets("Offline_Audits_tool").Select
+Worksheets("Offline_Audits_tool").Range("E2:E" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("B" & Range("B3").End(xlDown).Row + 1).PasteSpecial xlPasteValues
+
+Application.CutCopyMode = False
+
+
+Worksheets("Offline_Audits_Adhoc").Select
+Worksheets("Offline_Audits_Adhoc").Range("A2:A" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("A" & Range("A3").End(xlDown).Row + 1).PasteSpecial xlPasteValues
+
+Application.CutCopyMode = False
+
+Worksheets("Offline_Audits_Adhoc").Select
+Worksheets("Offline_Audits_Adhoc").Range("E2:E" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("B" & Range("B3").End(xlDown).Row + 1).PasteSpecial xlPasteValues
+
+Application.CutCopyMode = False
+
+
+Worksheets("Offline_Mapping").Select
+Worksheets("Offline_Mapping").Range("A2:A" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("A" & Range("A3").End(xlDown).Row + 1).PasteSpecial xlPasteValues
+
+Application.CutCopyMode = False
+
+Worksheets("Offline_Mapping").Select
+Worksheets("Offline_Mapping").Range("E2:E" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("B" & Range("B3").End(xlDown).Row + 1).PasteSpecial xlPasteValues
+
+Application.CutCopyMode = False
+
+
+Worksheets("Shipping_Audits").Select
+Worksheets("Shipping_Audits").Range("A2:A" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("A" & Range("A3").End(xlDown).Row + 1).PasteSpecial xlPasteValues
+
+Application.CutCopyMode = False
+
+Worksheets("Shipping_Audits").Select
+Worksheets("Shipping_Audits").Range("E2:E" & Range("A2").End(xlDown).Row).Copy
+Worksheets("other_shifts").Select
+Worksheets("other_shifts").Range("B" & Range("B3").End(xlDown).Row + 1).PasteSpecial xlPasteValues
+
+Application.CutCopyMode = False
+
+Worksheets("Shifts").Select
+
+End Sub
+
+Public Sub shifts_lookup()
+
+Dim i As Long
+Dim LastRow As Long
+LastRow = Range("A2").End(xlDown).Row
+
+Dim lookupTable As Range
+Dim cell As Range
+Set lookupTable = Worksheets("other_shifts").Range(Range("A1").CurrentRegion.Address)
+
+Dim lookupValue As String
+
+Dim columnIndex As Integer
+columnIndex = 2
+
+For i = 2 To LastRow
+    lookupValue = Worksheets("Shifts").Range("A" & i).Value
+    Worksheets("Shifts").Range("E" & i).Value = Application.VLookup(lookupValue, lookupTable, columnIndex, False)
+    For Each cell In Range("E" & i)
+        If IsError(cell.Value) Then
+            If cell.Value = CVErr(xlErrNA) Then
+                cell.Value = Range("D" & i)
+            End If
+            Else
+            cell.Value = cell.Value
+        End If
+    Next cell
+Next
+
+Range("D:D").EntireColumn.Delete
+
+End Sub
+
+Public Sub removeShiftDuplicates()
+
+Worksheets("other_shifts").Select
+
+Worksheets("other_shifts").Range("A2:A" & Range("A2").End(xlDown).Row).Copy
+Worksheets("Shifts").Select
+Worksheets("Shifts").Range("A" & Range("A3").End(xlDown).Row + 1).PasteSpecial xlPasteValues
+
+'Remove duplicates from 1st column
+
+Worksheets("Shifts").Select
+Range("A:A").Select
+ActiveSheet.Range("$A:$A").RemoveDuplicates Columns:=1, Header:=xlNo
+
+'Split values from 1st column and flash fill into respective columns.
+
+Range("B" & Range("B2").End(xlDown).Row).Select
+Range("B" & Range("B3").End(xlDown).Row).Value = "=LEFT(RC[-1],10)"
+Range("B" & Range("B3").End(xlDown).Row).Select
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+:=False, Transpose:=False
+        
+Application.CutCopyMode = False
+    
+Range("C" & Range("C2").End(xlDown).Row).Select
+Range("C" & Range("C2").End(xlDown).Row).Value = "=MID(RC[-2],11,LEN(RC[-2])-10)"
+Range("C" & Range("C2").End(xlDown).Row).Select
+Selection.Copy
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+:=False, Transpose:=False
+        
+Application.CutCopyMode = False
+
+Range("$B$" & Range("B2").End(xlDown).Row).Value = "'" & Range("B" & Range("B2").End(xlDown).Row)
+Range("B" & Range("B2").End(xlDown).Row).Select
+Range("$B$" & Range("B2").End(xlDown).Row).FlashFill
+Range("C" & Range("C2").End(xlDown).Row).Select
+Range("$C$" & Range("C2").End(xlDown).Row).FlashFill
+
+'7 format date into columns
+
+Range("B2", "B" & Range("A2").End(xlDown).Row).NumberFormat = "dd-mm-yyyy"
+
+
+End Sub
